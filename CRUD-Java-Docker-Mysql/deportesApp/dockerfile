@@ -1,0 +1,20 @@
+# Utilizar la imagen oficial de Tomcat 10
+
+FROM tomcat:10
+
+# Eliminar la aplicación de ejemplo predeterminada de Tomcat
+
+RUN rm -rf /usr/local/tomcat/webapps/*
+
+# Copiar el archivo WAR de la aplicación a la carpeta webapps de Tomcat
+
+COPY deportesApp.war /usr/local/tomcat/webapps/Root.war
+
+# Exponer el puerto en el que Tomcat estará escuchando
+
+EXPOSE 8080
+
+# Comando para iniciar Tomcat cuando se ejecute el contenedor
+
+CMD ["catalina.sh", "run"]
+

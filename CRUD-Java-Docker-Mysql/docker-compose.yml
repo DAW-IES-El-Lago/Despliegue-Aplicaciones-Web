@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  # Configuracion para el contenedor de Tomcat
+  tomcat:
+    build:
+      context: /home/vboxuser/Escritorio/deportesApp-despliegue/
+      dockerfile: /home/vboxuser/Escritorio/deportesApp-despliegue/Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+
+  # Configuración para el contenedor de MySQL
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: "pass"
+      MYSQL_DATABASE: deportes
+    ports:
+      - "3309:3306"

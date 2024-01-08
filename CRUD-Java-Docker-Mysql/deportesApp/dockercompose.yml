@@ -1,0 +1,22 @@
+version: "3"
+services:
+  backend:
+    build:
+      context: /home/vboxuser/Escritorio/deportesApp-despliegue/
+
+    ports:
+      - "8080:8080"
+
+    depends_on:
+      - database
+
+  database:
+    image: mysql:latest
+
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+
+      MYSQL_DATABASE: deportes
+
+    ports:
+      - "3309:3306"
